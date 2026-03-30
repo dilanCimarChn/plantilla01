@@ -1,0 +1,94 @@
+.cta-section {
+  position: relative;
+  overflow: hidden;
+  background: var(--dark-2);
+  text-align: center;
+  padding: 160px var(--pad-x);
+}
+
+.cta-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 70% at 50% 50%, rgba(198, 134, 66, 0.14) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.cta-content { position: relative; z-index: 2; }
+
+/* Círculos giratorios */
+.cta-circle {
+  position: absolute;
+  border-radius: 50%;
+  left: 50%; top: 50%;
+  pointer-events: none;
+}
+.cta-circle-1 {
+  width: 500px; height: 500px;
+  border: 1px solid rgba(92, 46, 10, 0.10);
+  transform: translate(-50%, -50%);
+  animation: ctaRotate 22s linear infinite;
+}
+.cta-circle-2 {
+  width: 750px; height: 750px;
+  border: 1px solid rgba(198, 134, 66, 0.06);
+  transform: translate(-50%, -50%);
+  animation: ctaRotate 32s linear infinite reverse;
+}
+.cta-circle-3 {
+  width: 1000px; height: 1000px;
+  border: 1px solid rgba(92, 46, 10, 0.04);
+  transform: translate(-50%, -50%);
+  animation: ctaRotate 42s linear infinite;
+}
+@keyframes ctaRotate { to { transform: translate(-50%, -50%) rotate(360deg); } }
+
+.cta-eyebrow {
+  justify-content: center;
+  margin-bottom: 28px;
+}
+.cta-eyebrow .section-eyebrow-line { background: rgba(92, 46, 10, 0.35); }
+.cta-eyebrow span { color: rgba(43, 26, 14, 0.52); }
+
+.cta-title {
+  font-family: var(--font-serif);
+  font-size: clamp(48px, 7vw, 96px);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  max-width: 900px;
+  margin: 0 auto 20px;
+  color: var(--white);
+}
+.cta-title em {
+  font-style: italic;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--cyan);
+}
+
+.cta-subtitle {
+  font-size: 18px;
+  font-weight: 300;
+  color: rgba(43, 26, 14, 0.48);
+  max-width: 500px;
+  margin: 0 auto 52px;
+  line-height: 1.72;
+}
+
+.cta-actions {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 1100px) {
+  .cta-section { padding: 120px var(--pad-x-md); }
+}
+@media (max-width: 600px) {
+  .cta-section { padding: var(--pad-y-sm) var(--pad-x-sm); }
+  .cta-circle-1, .cta-circle-2, .cta-circle-3 { display: none; }
+  .cta-actions { flex-direction: column; align-items: center; }
+  .cta-title   { font-size: clamp(36px, 9vw, 56px); }
+}

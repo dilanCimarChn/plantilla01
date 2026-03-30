@@ -1,0 +1,19 @@
+{
+  "name": "cristhianlino",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Cristhian Lino — Coaching Profesional · Sitio web premium",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "firebase": "^12.11.0",
+    "gsap": "^3.12.5",
+    "lenis": "^1.1.9"
+  },
+  "devDependencies": {
+    "vite": "^5.4.0"
+  }
+}

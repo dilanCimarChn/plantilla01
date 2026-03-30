@@ -1,0 +1,112 @@
+/* ── Shared section layout ──────────────────── */
+section { padding: var(--pad-y) var(--pad-x); }
+
+/* ── Section eyebrow ────────────────────────── */
+.section-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+.section-eyebrow-line {
+  width: 30px; height: 1px;
+  background: var(--purple);
+  flex-shrink: 0;
+}
+.section-eyebrow span {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.26em;
+  color: var(--purple-light);
+  text-transform: uppercase;
+}
+
+/* ── Section title ──────────────────────────── */
+.section-title {
+  font-family: var(--font-serif);
+  font-size: clamp(38px, 5vw, 64px);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--white);
+}
+
+.text-accent-italic {
+  font-style: italic;
+  color: var(--cyan);
+}
+
+/* ── Buttons ────────────────────────────────── */
+.btn-primary {
+  background: var(--purple);
+  color: var(--cream);
+  padding: 18px 44px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  transition: transform 0.4s var(--ease-out), box-shadow 0.4s;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--purple);
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, var(--purple-light), var(--cyan));
+  transform: translateX(-100%);
+  transition: transform 0.4s var(--ease-out);
+  z-index: 0;
+}
+.btn-primary:hover::before { transform: translateX(0); }
+
+.btn-primary > span,
+.btn-primary > svg { position: relative; z-index: 1; }
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--glow-purple);
+  border-color: var(--purple-light);
+}
+
+.btn-secondary {
+  color: rgba(43, 26, 14, 0.60);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: gap var(--dur-base), color var(--dur-base), border-color var(--dur-base);
+  border-bottom: 1px solid rgba(92, 46, 10, 0.30);
+  padding-bottom: 4px;
+}
+.btn-secondary:hover {
+  gap: 18px;
+  border-color: var(--cyan);
+  color: var(--purple);
+}
+
+/* ── Fade-in fallback ───────────────────────── */
+.fade-in {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+}
+.fade-in.is-visible { opacity: 1; transform: translateY(0); }
+
+/* ── Global section responsive padding ──────── */
+@media (max-width: 1100px) { section { padding: var(--pad-y-md) var(--pad-x-md); } }
+@media (max-width: 600px)  { section { padding: var(--pad-y-sm) var(--pad-x-sm); } }
+
+/* ── Buttons on small screens ───────────────── */
+@media (max-width: 600px) {
+  .btn-primary  { padding: 16px 32px; font-size: 12px; }
+}

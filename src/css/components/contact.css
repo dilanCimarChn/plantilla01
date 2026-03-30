@@ -1,0 +1,174 @@
+.contact {
+  padding: var(--pad-y) var(--pad-x);
+  background: var(--dark-2);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 100px;
+  align-items: start;
+}
+
+.contact-info .section-title { margin-bottom: 24px; }
+
+.contact-text {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.82;
+  color: rgba(43, 26, 14, 0.58);
+  margin-bottom: 48px;
+}
+
+.contact-items { margin-bottom: 40px; }
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(92, 46, 10, 0.12);
+}
+.contact-item:first-child { border-top: 1px solid rgba(92, 46, 10, 0.12); }
+
+.contact-item-icon {
+  width: 44px; height: 44px;
+  border: 1px solid rgba(92, 46, 10, 0.20);
+  background: rgba(92, 46, 10, 0.05);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; flex-shrink: 0;
+  transition: background var(--dur-base), border-color var(--dur-base), box-shadow var(--dur-base);
+  color: var(--purple-light);
+}
+.contact-item:hover .contact-item-icon {
+  background: rgba(92, 46, 10, 0.12);
+  border-color: var(--purple);
+  box-shadow: 0 0 12px rgba(92, 46, 10, 0.15);
+}
+
+.contact-item-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--purple-light);
+  text-transform: uppercase;
+  margin-bottom: 3px;
+}
+
+.contact-item-value { font-size: 16px; font-weight: 500; color: var(--white); }
+.contact-item-value a { text-decoration: none; color: var(--white); transition: color var(--dur-fast); }
+.contact-item-value a:hover { color: var(--cyan); }
+
+.contact-socials { display: flex; gap: 10px; }
+
+.social-btn {
+  width: 44px; height: 44px;
+  border: 1px solid rgba(92, 46, 10, 0.18);
+  background: rgba(92, 46, 10, 0.04);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gray);
+  text-decoration: none;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.05em;
+  transition: background var(--dur-base), color var(--dur-base), border-color var(--dur-base),
+              transform var(--dur-base), box-shadow var(--dur-base);
+}
+.social-btn:hover {
+  background: var(--purple);
+  color: var(--cream);
+  border-color: var(--purple);
+  transform: translateY(-2px);
+  box-shadow: var(--glow-purple);
+}
+
+.contact-form-wrap { padding-top: 20px; }
+
+.contact-form { display: flex; flex-direction: column; }
+
+.form-group { margin-bottom: 22px; }
+
+.form-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--purple-light);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.form-input {
+  width: 100%;
+  background: var(--dark-3);
+  border: 1px solid rgba(92, 46, 10, 0.18);
+  color: var(--white);
+  padding: 16px 20px;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  outline: none;
+  transition: border-color var(--dur-base), box-shadow var(--dur-base);
+  -webkit-appearance: none;
+}
+.form-input:focus {
+  border-color: var(--purple);
+  box-shadow: 0 0 0 3px rgba(92, 46, 10, 0.10);
+}
+.form-input::placeholder { color: rgba(43, 26, 14, 0.30); }
+
+.form-select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235C2E0A' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 18px center;
+  padding-right: 44px;
+}
+.form-select option { background: var(--dark-3); color: var(--white); }
+
+.form-textarea { resize: vertical; min-height: 140px; }
+
+.form-submit {
+  width: 100%;
+  background: var(--purple);
+  color: var(--cream);
+  border: 1px solid var(--purple);
+  padding: 20px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  transition: transform var(--dur-base), box-shadow var(--dur-base);
+  position: relative; overflow: hidden;
+}
+
+.form-submit::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, var(--purple-light), var(--cyan));
+  transform: translateX(-100%);
+  transition: transform var(--dur-base) var(--ease-out);
+}
+.form-submit:hover::before { transform: translateX(0); }
+.form-submit > * { position: relative; z-index: 1; }
+
+.form-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--glow-purple);
+}
+
+.form-submit.is-loading { opacity: 0.7; cursor: not-allowed; }
+.form-submit.is-success { background: #166534; border-color: #166534; }
+
+@media (max-width: 1100px) {
+  .contact { grid-template-columns: 1fr; gap: 60px; padding: var(--pad-y-md) var(--pad-x-md); }
+}
+@media (max-width: 600px) {
+  .contact { padding: var(--pad-y-sm) var(--pad-x-sm); gap: 48px; }
+  .contact-socials { flex-wrap: wrap; }
+  .social-btn { width: 48px; height: 48px; }  /* larger tap target */
+}
+@media (max-width: 400px) {
+  .form-input, .form-select, .form-textarea { padding: 14px 16px; font-size: 14px; }
+  .form-submit { padding: 18px; font-size: 13px; }
+}

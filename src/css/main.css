@@ -1,0 +1,24 @@
+/* ── Base ─────────────────────────────────────────── */
+@import './base/variables.css';
+@import './base/reset.css';
+
+/* ── Shared animations & utilities ───────────────── */
+@import './animations.css';
+
+/* ── Components ───────────────────────────────────── */
+@import './components/loader.css';
+@import './components/cursor.css';
+@import './components/topbar.css';
+@import './components/navbar.css';
+@import './components/mobile-menu.css';
+@import './components/hero.css';
+@import './components/ticker.css';
+@import './components/marquee.css';
+@import './components/about.css';
+@import './components/services.css';
+@import './components/clients.css';
+@import './components/process.css';
+@import './components/testimonials.css';
+@import './components/cta.css';
+@import './components/contact.css';
+@import './components/footer.css';

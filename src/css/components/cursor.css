@@ -1,0 +1,42 @@
+.cursor, .cursor-ring {
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: var(--z-cursor);
+  will-change: left, top;
+}
+
+.cursor {
+  width: 8px; height: 8px;
+  background: var(--cyan);
+  z-index: calc(var(--z-cursor) + 1);
+  transition: width 0.2s, height 0.2s, background 0.2s;
+  box-shadow: 0 0 8px rgba(198, 134, 66, 0.55);
+}
+
+.cursor-ring {
+  width: 36px; height: 36px;
+  border: 1px solid rgba(92, 46, 10, 0.45);
+  transition: width 0.35s var(--ease-smooth), height 0.35s var(--ease-smooth),
+              border-color 0.3s;
+}
+
+.cursor.is-hovered {
+  width: 14px; height: 14px;
+  background: var(--purple);
+  box-shadow: var(--glow-purple);
+}
+.cursor-ring.is-hovered {
+  width: 56px; height: 56px;
+  border-color: rgba(92, 46, 10, 0.70);
+  box-shadow: 0 0 16px rgba(92, 46, 10, 0.10);
+}
+
+@media (hover: none) {
+  .cursor, .cursor-ring { display: none; }
+  body    { cursor: auto; }
+  button  { cursor: pointer; }
+  a       { cursor: pointer; }
+  select, input, textarea { cursor: auto; }
+}
