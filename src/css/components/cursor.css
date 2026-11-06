@@ -1,42 +1,56 @@
 .cursor, .cursor-ring {
   position: fixed;
-  border-radius: 50%;
+  top: 0; left: 0;
   pointer-events: none;
-  transform: translate(-50%, -50%);
   z-index: var(--z-cursor);
-  will-change: left, top;
+  border-radius: 50%;          /* única excepción al "sin redondeo" */
+  will-change: transform;
 }
 
+/* Inner dot — 6px, lime */
 .cursor {
-  width: 8px; height: 8px;
-  background: var(--cyan);
-  z-index: calc(var(--z-cursor) + 1);
-  transition: width 0.2s, height 0.2s, background 0.2s;
-  box-shadow: 0 0 8px rgba(198, 134, 66, 0.55);
+  width: 6px; height: 6px;
+  background: var(--lime);
+  transition: opacity 0.3s;
 }
 
+/* Outer ring — 32px, 1px lime, slow lerp (JS) */
 .cursor-ring {
-  width: 36px; height: 36px;
-  border: 1px solid rgba(92, 46, 10, 0.45);
-  transition: width 0.35s var(--ease-smooth), height 0.35s var(--ease-smooth),
-              border-color 0.3s;
+  width: 32px; height: 32px;
+  border: 1px solid var(--lime);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: width 0.4s var(--ease-out),
+              height 0.4s var(--ease-out),
+              rotate 0.4s var(--ease-out),
+              background 0.3s, opacity 0.3s;
 }
 
-.cursor.is-hovered {
-  width: 14px; height: 14px;
-  background: var(--purple);
-  box-shadow: var(--glow-purple);
+/* Over links/buttons: expand + rotate 45° */
+.cursor-ring.is-hover {
+  width: 60px; height: 60px;
+  rotate: 45deg;
 }
-.cursor-ring.is-hovered {
-  width: 56px; height: 56px;
-  border-color: rgba(92, 46, 10, 0.70);
-  box-shadow: 0 0 16px rgba(92, 46, 10, 0.10);
+
+/* Over menu cards: become a "Ver" chip */
+.cursor-ring.is-view {
+  width: 72px; height: 72px;
+  background: var(--lime);
+  border-color: var(--lime);
 }
+
+.cursor-label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--bg);
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+.cursor-ring.is-view .cursor-label { opacity: 1; }
 
 @media (hover: none) {
   .cursor, .cursor-ring { display: none; }
-  body    { cursor: auto; }
-  button  { cursor: pointer; }
-  a       { cursor: pointer; }
-  select, input, textarea { cursor: auto; }
 }

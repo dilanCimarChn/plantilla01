@@ -1,44 +1,48 @@
 export function initCursor() {
-  const cursor = document.getElementById('cursor');
-  const ring   = document.getElementById('cursorRing');
+  const dot   = document.getElementById('cursor');
+  const ring  = document.getElementById('cursorRing');
 
-  if (!cursor || !ring) return;
-  if (window.matchMedia('(hover: none)').matches) return;
+  if (!dot || !ring) return;
+  if (window.matchMedia('(hover: none)').matches) {
+    dot.style.display = ring.style.display = 'none';
+    document.body.style.cursor = 'auto';
+    return;
+  }
 
-  let mouseX = 0, mouseY = 0;
-  let ringX  = 0, ringY  = 0;
+  let mx = window.innerWidth / 2, my = window.innerHeight / 2;
+  let rx = mx, ry = my;
 
   document.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    cursor.style.left = mouseX + 'px';
-    cursor.style.top  = mouseY + 'px';
+    mx = e.clientX; my = e.clientY;
+    dot.style.transform = `translate(-50%, -50%) translate(${mx}px, ${my}px)`;
   });
 
-  // Smooth ring follow
-  function animateRing() {
-    ringX += (mouseX - ringX) * 0.13;
-    ringY += (mouseY - ringY) * 0.13;
-    ring.style.left = ringX + 'px';
-    ring.style.top  = ringY + 'px';
-    requestAnimationFrame(animateRing);
-  }
-  animateRing();
+  // Ring follows with a slow lerp (0.08)
+  (function follow() {
+    rx += (mx - rx) * 0.08;
+    ry += (my - ry) * 0.08;
+    ring.style.transform = `translate(-50%, -50%) translate(${rx}px, ${ry}px)`;
+    requestAnimationFrame(follow);
+  })();
 
-  // Hover expand
-  const interactives = 'a, button, .service-card, .client-item, .process-step, .testimonial-card, .about-value, .nav-cta, .form-submit, .social-btn';
+  // Hover targets
+  const LINKS = 'a, button, input, select, textarea, .client-item, .social-btn';
+  const VIEW  = '.menu-card';
 
   document.addEventListener('mouseover', (e) => {
-    if (e.target.closest(interactives)) {
-      cursor.classList.add('is-hovered');
-      ring.classList.add('is-hovered');
-    }
+    if (e.target.closest(VIEW))      ring.classList.add('is-view');
+    else if (e.target.closest(LINKS)) ring.classList.add('is-hover');
   });
 
   document.addEventListener('mouseout', (e) => {
-    if (e.target.closest(interactives)) {
-      cursor.classList.remove('is-hovered');
-      ring.classList.remove('is-hovered');
-    }
+    if (e.target.closest(VIEW))      ring.classList.remove('is-view');
+    else if (e.target.closest(LINKS)) ring.classList.remove('is-hover');
+  });
+
+  document.addEventListener('mouseleave', () => {
+    dot.style.opacity = ring.style.opacity = '0';
+  });
+  document.addEventListener('mouseenter', () => {
+    dot.style.opacity = ring.style.opacity = '1';
   });
 }

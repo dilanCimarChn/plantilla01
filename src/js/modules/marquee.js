@@ -1,14 +1,14 @@
 const WORDS = [
   'CAFÉ ARTESANAL', 'SABOR', 'ORIGEN', 'CALIDEZ',
-  'PASIÓN', 'TRADICIÓN', 'AROMA', 'HECHO CON AMOR',
+  'PASIÓN', 'TRADICIÓN', 'AROMA', 'HECHO A MANO',
 ];
 
 export function initMarquee() {
-  const m1 = document.getElementById('marquee1');
-  const m2 = document.getElementById('marquee2');
-  if (!m1 || !m2) return;
+  const track = document.getElementById('marquee1');
+  if (!track) return;
+  // 4 copies → xPercent:-50 loops seamlessly (see strip.js)
   const repeated = [...WORDS, ...WORDS, ...WORDS, ...WORDS];
-  const html = repeated.map((w) => `<span class="marquee-item">${w}</span>`).join('');
-  m1.innerHTML = html;
-  m2.innerHTML = html;
+  track.innerHTML = repeated
+    .map((w) => `<span class="marquee-item">${w}<span class="marquee-star">✦</span></span>`)
+    .join('');
 }

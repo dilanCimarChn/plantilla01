@@ -6,66 +6,46 @@
   <meta name="description" content="CAFÉ AROMA — Cafetería artesanal en La Paz, Bolivia. Espressos de origen, pastelería hecha a mano y desayunos que enamoran.">
   <meta name="keywords" content="cafetería La Paz, café artesanal Bolivia, pastelería, espresso, desayunos, catering eventos">
   <meta property="og:title" content="CAFÉ AROMA — Cafetería Artesanal">
-  <meta property="og:description" content="Granos de origen, recetas propias y un espacio acogedor en el corazón de La Paz. Ven a vivir la experiencia.">
+  <meta property="og:description" content="Granos de origen, recetas propias y un espacio acogedor en el corazón de La Paz.">
   <meta property="og:type" content="website">
   <title>CAFÉ AROMA — Cafetería Artesanal</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@1,500;1,600&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
   <script type="module" src="/src/main.js"></script>
 </head>
 <body>
 
+<!-- ══ FIXED UI (fuera del smooth-wrapper) ══════════════════════════════ -->
+
 <!-- LOADER -->
 <div class="loader" id="loader">
-  <div class="loader-inner">
-    <div class="loader-logo">CAFÉ<span>.</span>AROMA</div>
-    <div class="loader-bar"><div class="loader-bar-fill"></div></div>
-  </div>
+  <div class="loader-count" id="loaderCount">0</div>
+  <div class="loader-label">CAFÉ AROMA — La Paz</div>
 </div>
 
 <!-- CURSOR -->
 <div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="cursorRing"></div>
+<div class="cursor-ring" id="cursorRing"><span class="cursor-label" id="cursorLabel">Ver</span></div>
 
-<!-- MOBILE MENU OVERLAY -->
+<!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
-  <div class="mobile-menu-inner">
-    <nav class="mobile-nav" role="navigation" aria-label="Menu movil">
-      <a href="#inicio" class="mobile-nav-link">Inicio</a>
-      <a href="#nosotros" class="mobile-nav-link">Nosotros</a>
-      <a href="#menu" class="mobile-nav-link">Menú</a>
-      <a href="#clientes" class="mobile-nav-link">Clientes</a>
-      <a href="#contacto" class="mobile-nav-link">Contacto</a>
-    </nav>
-    <div class="mobile-menu-footer">
-      <a href="tel:77777777" class="mobile-menu-phone">77777777</a>
-      <a href="#contacto" class="btn-primary mobile-cta">
-        <span>Hacer Pedido</span>
-      </a>
-    </div>
-    <div class="mobile-menu-deco"></div>
-  </div>
-</div>
-
-<!-- TOP BAR -->
-<div class="topbar" id="topbar">
-  <div class="topbar-left">
+  <nav class="mobile-nav" role="navigation" aria-label="Menu movil">
+    <a href="#inicio"   class="mobile-nav-link"><span class="mobile-nav-idx">01</span>Inicio</a>
+    <a href="#nosotros" class="mobile-nav-link"><span class="mobile-nav-idx">02</span>Nosotros</a>
+    <a href="#menu"     class="mobile-nav-link"><span class="mobile-nav-idx">03</span>Menú</a>
+    <a href="#clientes" class="mobile-nav-link"><span class="mobile-nav-idx">04</span>Clientes</a>
+    <a href="#contacto" class="mobile-nav-link"><span class="mobile-nav-idx">05</span>Contacto</a>
+  </nav>
+  <div class="mobile-menu-footer">
     <a href="tel:77777777">77777777</a>
-    &nbsp;&middot;&nbsp;
     <a href="mailto:hola@cafearoma.com">hola@cafearoma.com</a>
-  </div>
-  <div class="topbar-social">
-    <a href="#" title="Facebook" aria-label="Facebook">fb</a>
-    <a href="#" title="Instagram" aria-label="Instagram">ig</a>
-    <a href="#" title="TikTok" aria-label="TikTok">tk</a>
-    <a href="#" title="WhatsApp" aria-label="WhatsApp">wa</a>
   </div>
 </div>
 
 <!-- NAVBAR -->
 <nav id="navbar" role="navigation" aria-label="Navegacion principal">
-  <a href="#" class="logo">CAFÉ<span>.</span></a>
+  <a href="#inicio" class="logo">CA</a>
   <ul class="nav-links">
     <li><a href="#inicio">Inicio</a></li>
     <li><a href="#nosotros">Nosotros</a></li>
@@ -73,74 +53,47 @@
     <li><a href="#clientes">Clientes</a></li>
     <li><a href="#contacto">Contacto</a></li>
   </ul>
-  <div class="nav-right">
-    <a href="#contacto" class="nav-cta magnetic">Hacer Pedido</a>
-    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">
-      <span class="bar bar-1"></span>
-      <span class="bar bar-2"></span>
-      <span class="bar bar-3"></span>
-    </button>
-  </div>
+  <a href="#contacto" class="nav-cta">Hacer Pedido</a>
+  <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">
+    <span class="bar bar-1"></span>
+    <span class="bar bar-2"></span>
+  </button>
 </nav>
+
+<!-- ══ SMOOTH SCROLL CONTENT ════════════════════════════════════════════ -->
+<div id="smooth-wrapper">
+<div id="smooth-content">
 
 <!-- HERO -->
 <section class="hero" id="inicio">
-  <div class="hero-bg"></div>
-  <div class="hero-grid-overlay"></div>
-  <canvas id="heroCanvas" class="hero-canvas" aria-hidden="true"></canvas>
-  <div class="hero-orb" id="heroOrb"></div>
+  <div class="hero-line" id="heroLine" aria-hidden="true"></div>
 
-  <div class="hero-line" style="width:360px; top:22%; animation-duration:14s; animation-delay:0s;"></div>
-  <div class="hero-line" style="width:220px; top:48%; animation-duration:18s; animation-delay:5s;"></div>
-  <div class="hero-line" style="width:480px; top:74%; animation-duration:21s; animation-delay:8s;"></div>
-
-  <div class="hero-content">
-    <div class="hero-eyebrow">
-      <div class="hero-eyebrow-line"></div>
-      <span>Cafetería Artesanal &middot; La Paz, Bolivia</span>
-    </div>
-    <h1 class="hero-title">
-      <span class="hero-title-line" data-index="0">Hecho con</span>
-      <span class="hero-title-line hero-title-glitch" data-text="Amor" data-index="1">Amor</span>
-      <span class="hero-title-line hero-title-stroke" data-index="2">Artesanal.</span>
-    </h1>
-    <p class="hero-desc">
-      Cada taza es una historia. Granos de origen, recetas artesanales y el calor de un espacio pensado para ti. Ven a vivir el momento.
+  <div class="hero-mark">
+    <h1 class="hero-title" id="heroTitle">CAFÉ</h1>
+    <p class="hero-sub" data-fade>
+      <span>Cafetería artesanal</span>
+      <span class="hero-sub-sep">/</span>
+      <span>La Paz, Bolivia</span>
     </p>
-    <div class="hero-actions">
-      <a href="#menu" class="btn-primary magnetic">
+  </div>
+
+  <div class="hero-foot">
+    <p class="hero-desc" data-fade>
+      Cada taza es una historia. Granos de origen, recetas propias
+      y el calor de un espacio pensado para quedarse.
+    </p>
+    <div class="hero-actions" data-fade>
+      <a href="#menu" class="btn-primary">
         <span>Ver Menú</span>
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
-      <a href="#nosotros" class="btn-secondary">
-        Nuestra Historia
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-          <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </a>
+      <a href="#nosotros" class="btn-secondary">Nuestra Historia</a>
     </div>
   </div>
 
-  <div class="hero-stats">
-    <div class="hero-stat">
-      <div class="hero-stat-num" data-count="500">0</div>
-      <div class="hero-stat-label">Clientes Felices</div>
-    </div>
-    <div class="hero-stat">
-      <div class="hero-stat-num" data-count="5">0</div>
-      <div class="hero-stat-label">Anos de Sabor</div>
-    </div>
-    <div class="hero-stat">
-      <div class="hero-stat-num" data-count="100">0</div>
-      <div class="hero-stat-label">% Artesanal</div>
-    </div>
-  </div>
-
-  <div class="scroll-indicator" aria-hidden="true">
-    <div class="scroll-dot"></div>
+  <div class="scroll-indicator" data-fade aria-hidden="true">
     <span>Scroll</span>
+    <div class="scroll-track"><div class="scroll-dot"></div></div>
   </div>
 </section>
 
@@ -149,252 +102,232 @@
   <div class="ticker-inner" id="tickerInner"></div>
 </div>
 
-<!-- MARQUEE -->
-<div class="marquee-section" aria-hidden="true">
-  <div class="marquee-track" id="marquee1"></div>
-  <div class="marquee-track marquee-reverse" id="marquee2"></div>
-</div>
+<!-- PRODUCT SHOWCASE — taza que rota con el scroll (3 escenas) -->
+<section class="product-section" id="producto">
+  <div class="product-stage">
+
+    <div class="product-scenes">
+      <article class="product-scene scene-0">
+        <div class="product-scene-num">01 — Ingredientes</div>
+        <div class="product-scene-body">
+          <h2 class="product-scene-title">Grano de origen</h2>
+          <p class="product-scene-text">Seleccionado a mano y tostado en lotes pequeños para sacar cada matiz.</p>
+        </div>
+      </article>
+      <article class="product-scene scene-1">
+        <div class="product-scene-num">02 — Proceso</div>
+        <div class="product-scene-body">
+          <h2 class="product-scene-title">Extracción justa</h2>
+          <p class="product-scene-text">Temperatura, presión y tiempo en equilibrio. Sin atajos.</p>
+        </div>
+      </article>
+      <article class="product-scene scene-2">
+        <div class="product-scene-num">03 — En la taza</div>
+        <div class="product-scene-body">
+          <h2 class="product-scene-title">Tu café, listo</h2>
+          <p class="product-scene-text">Cuerpo, aroma y un final dulce. Hecho para empezar el día.</p>
+        </div>
+      </article>
+    </div>
+
+    <div class="product" id="product" role="img" aria-label="Taza de café CAFÉ AROMA">
+      <svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
+        <!-- vapor -->
+        <path class="steam s1" d="M104 80 C96 68 112 60 104 46 C98 36 108 30 104 22"/>
+        <path class="steam s2" d="M136 80 C128 68 144 60 136 46 C130 36 140 30 136 22"/>
+        <!-- platillo -->
+        <ellipse class="cup-stroke" cx="120" cy="208" rx="86" ry="13"/>
+        <!-- café (superficie) -->
+        <ellipse class="cup-coffee" cx="120" cy="98" rx="48" ry="11"/>
+        <!-- borde de la taza -->
+        <ellipse class="cup-stroke" cx="120" cy="96" rx="54" ry="13"/>
+        <!-- cuerpo -->
+        <path class="cup-stroke" d="M66 98 L84 184 Q86 191 93 191 L147 191 Q154 191 156 184 L174 98"/>
+        <!-- asa -->
+        <path class="cup-stroke" d="M174 116 C208 110 212 152 182 158"/>
+      </svg>
+    </div>
+
+  </div>
+</section>
 
 <!-- ABOUT -->
 <section class="about" id="nosotros">
-  <div class="about-image-wrap">
-    <div class="about-corner"></div>
-    <div class="about-image-frame">
-      <!--
-        MEDIA: reemplaza este bloque con tu contenido real.
-
-        OPCIÓN A — Video de instalaciones (recomendado):
-        <video autoplay loop muted playsinline>
-          <source src="video-cafe.mp4" type="video/mp4">
-        </video>
-
-        OPCIÓN B — Foto de las instalaciones:
-        <img src="img/instalaciones.jpg" alt="Nuestras instalaciones">
-      -->
-      <div class="about-placeholder" aria-label="CAFÉ AROMA">
-        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="opacity:0.35;margin-bottom:12px;"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg>
-        <span>Video o foto<br>de tus instalaciones</span>
-      </div>
-    </div>
-    <div class="about-badge">
-      <span class="about-badge-num">500+</span>
-      Clientes
-    </div>
-    <div class="about-years">
-      <span class="about-years-num">5</span>
-      <span class="about-years-label">Anos</span>
-    </div>
-  </div>
-  <div class="about-content">
+  <div class="about-head">
     <div class="section-eyebrow">
       <div class="section-eyebrow-line"></div>
       <span>Nuestra Historia</span>
     </div>
-    <h2 class="section-title">
-      Nacimos del<br>
-      <em class="text-accent-italic">amor al café</em>
-    </h2>
-    <p class="about-text">
-      CAFÉ AROMA nació en La Paz de la pasión de una familia por el buen café. Desde nuestra apertura, nos hemos dedicado a ofrecer una experiencia auténtica: granos seleccionados de origen, recetas propias y un espacio donde cada detalle importa.
-    </p>
-    <p class="about-text">
-      Nuestro equipo de baristas y pasteleros trabaja cada día con ingredientes frescos y técnicas artesanales para crear momentos únicos que nuestros clientes quieren repetir.
-    </p>
-    <div class="about-values">
-      <div class="about-value"><div class="about-value-dot"></div>Granos de origen selecto</div>
-      <div class="about-value"><div class="about-value-dot"></div>Recetas artesanales propias</div>
-      <div class="about-value"><div class="about-value-dot"></div>Ingredientes frescos diarios</div>
-      <div class="about-value"><div class="about-value-dot"></div>Preparación con amor</div>
-      <div class="about-value"><div class="about-value-dot"></div>Espacio acogedor</div>
-      <div class="about-value"><div class="about-value-dot"></div>Servicio personalizado</div>
-    </div>
-    <a href="#contacto" class="btn-primary magnetic" style="display:inline-flex;margin-top:8px;">
-      <span>Contáctanos</span>
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </a>
+    <h2 class="section-title" data-reveal data-speed="0.9">Nacimos del<br><span class="accent">amor al café</span></h2>
   </div>
-</section>
 
-<!-- MENU / PRODUCTS -->
-<section class="services" id="menu">
-  <div class="services-header">
-    <div>
-      <div class="section-eyebrow">
-        <div class="section-eyebrow-line"></div>
-        <span>Nuestro Menú</span>
+  <div class="about-body">
+    <div class="about-image-wrap" data-reveal>
+      <div class="about-image-frame">
+        <!--
+          MEDIA: reemplaza este bloque con tu contenido real.
+          OPCIÓN A — Video:  <video autoplay loop muted playsinline><source src="video-cafe.mp4" type="video/mp4"></video>
+          OPCIÓN B — Foto:   <img src="img/instalaciones.jpg" alt="Nuestras instalaciones">
+        -->
+        <div class="about-placeholder" aria-label="CAFÉ AROMA">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg>
+          <span>Video o foto<br>de tus instalaciones</span>
+        </div>
       </div>
-      <h2 class="section-title">Lo que<br>preparamos</h2>
+      <div class="about-badge" data-speed="1.15"><span>05</span> años</div>
     </div>
-    <a href="#contacto" class="btn-primary magnetic" style="flex-shrink:0;">
-      <span>Ver Carta Completa</span>
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </a>
+
+    <div class="about-text-col">
+      <p class="about-text" data-speed="1.05">CAFÉ AROMA nació en La Paz de la pasión de una familia por el buen café. Desde el primer día nos dedicamos a una experiencia auténtica: granos seleccionados de origen, recetas propias y un espacio donde cada detalle importa.</p>
+      <p class="about-text" data-speed="1.12">Nuestro equipo de baristas y pasteleros trabaja cada mañana con ingredientes frescos y técnicas artesanales para crear momentos que nuestros clientes quieren repetir.</p>
+      <ul class="about-values" data-speed="1.18">
+        <li>Granos de origen selecto</li>
+        <li>Recetas artesanales propias</li>
+        <li>Ingredientes frescos a diario</li>
+        <li>Preparación con calma</li>
+        <li>Espacio para quedarse</li>
+        <li>Servicio cercano</li>
+      </ul>
+      <a href="#contacto" class="btn-primary"><span>Contáctanos</span>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
   </div>
-  <div class="services-grid">
+</section>
 
-    <article class="service-card product-card tilt-card">
-      <!--
-        FOTO DEL PRODUCTO — reemplaza este div con:
-        <img src="img/espresso.jpg" alt="Espressos y Café">
-      -->
-      <div class="product-img" data-hint="Foto del producto"></div>
-      <div class="service-num">01</div>
-      <h3 class="service-title">Espressos &amp; Café</h3>
-      <p class="service-desc">Espressos, americanos, lattes y más, preparados con granos de origen tostados artesanalmente. Cada taza refleja meses de selección y cuidado.</p>
-      <a href="#contacto" class="service-link">Ver opciones
-        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
+<!-- MENU -->
+<section class="menu" id="menu">
+  <div class="menu-head">
+    <div>
+      <div class="section-eyebrow"><div class="section-eyebrow-line"></div><span>Nuestro Menú</span></div>
+      <h2 class="section-title" data-reveal>Lo que<br>preparamos</h2>
+    </div>
+    <a href="#contacto" class="btn-secondary">Ver carta completa</a>
+  </div>
+
+  <div class="menu-grid">
+
+    <article class="menu-card menu-card--wide">
+      <div class="menu-card-media">
+        <!-- FOTO: <img src="img/espresso.jpg" alt="Espressos y Café"> -->
+        <div class="menu-card-img" data-hint="Foto del producto"></div>
+      </div>
+      <div class="menu-card-body">
+        <span class="menu-card-index">01</span>
+        <h3 class="menu-card-title">Espressos &amp; Café</h3>
+        <p class="menu-card-desc">Espressos, americanos, lattes y más, preparados con granos de origen tostados artesanalmente. Cada taza refleja meses de selección y cuidado.</p>
+        <span class="menu-card-link">Ver opciones <span class="arrow">→</span></span>
+      </div>
     </article>
 
-    <article class="service-card product-card tilt-card">
-      <!--
-        FOTO DEL PRODUCTO — reemplaza este div con:
-        <img src="img/frappes.jpg" alt="Bebidas Frías">
-      -->
-      <div class="product-img" data-hint="Foto del producto"></div>
-      <div class="service-num">02</div>
-      <h3 class="service-title">Bebidas Frías</h3>
-      <p class="service-desc">Frappés, cold brew, granizados y smoothies de frutas. Refrescantes y equilibrados para cualquier momento del día.</p>
-      <a href="#contacto" class="service-link">Ver opciones
-        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
+    <article class="menu-card">
+      <div class="menu-card-media"><div class="menu-card-img" data-hint="Foto del producto"></div></div>
+      <div class="menu-card-body">
+        <span class="menu-card-index">02</span>
+        <h3 class="menu-card-title">Bebidas Frías</h3>
+        <p class="menu-card-desc">Frappés, cold brew, granizados y smoothies de fruta. Refrescantes y equilibrados.</p>
+        <span class="menu-card-link">Ver opciones <span class="arrow">→</span></span>
+      </div>
     </article>
 
-    <article class="service-card product-card tilt-card">
-      <!--
-        FOTO DEL PRODUCTO — reemplaza este div con:
-        <img src="img/pasteleria.jpg" alt="Pastelería Artesanal">
-      -->
-      <div class="product-img" data-hint="Foto del producto"></div>
-      <div class="service-num">03</div>
-      <h3 class="service-title">Pastelería Artesanal</h3>
-      <p class="service-desc">Croissants, muffins, tortas y panes elaborados cada mañana con mantequilla real y recetas de la casa. Sin conservantes, todo fresco.</p>
-      <a href="#contacto" class="service-link">Ver opciones
-        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
+    <article class="menu-card">
+      <div class="menu-card-media"><div class="menu-card-img" data-hint="Foto del producto"></div></div>
+      <div class="menu-card-body">
+        <span class="menu-card-index">03</span>
+        <h3 class="menu-card-title">Pastelería</h3>
+        <p class="menu-card-desc">Croissants, muffins, tortas y panes horneados cada mañana con mantequilla real. Sin conservantes.</p>
+        <span class="menu-card-link">Ver opciones <span class="arrow">→</span></span>
+      </div>
     </article>
 
-    <article class="service-card product-card tilt-card">
-      <!--
-        FOTO DEL PRODUCTO — reemplaza este div con:
-        <img src="img/desayunos.jpg" alt="Desayunos">
-      -->
-      <div class="product-img" data-hint="Foto del producto"></div>
-      <div class="service-num">04</div>
-      <h3 class="service-title">Desayunos</h3>
-      <p class="service-desc">Desayunos completos, tostadas artesanales, bowls de avena y huevos a tu gusto. El mejor comienzo de día, a tu ritmo.</p>
-      <a href="#contacto" class="service-link">Ver opciones
-        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
+    <article class="menu-card">
+      <div class="menu-card-media"><div class="menu-card-img" data-hint="Foto del producto"></div></div>
+      <div class="menu-card-body">
+        <span class="menu-card-index">04</span>
+        <h3 class="menu-card-title">Desayunos</h3>
+        <p class="menu-card-desc">Tostadas artesanales, bowls de avena y huevos a tu gusto. El mejor comienzo del día.</p>
+        <span class="menu-card-link">Ver opciones <span class="arrow">→</span></span>
+      </div>
     </article>
 
-    <article class="service-card product-card tilt-card">
-      <!--
-        FOTO DEL PRODUCTO — reemplaza este div con:
-        <img src="img/postres.jpg" alt="Postres">
-      -->
-      <div class="product-img" data-hint="Foto del producto"></div>
-      <div class="service-num">05</div>
-      <h3 class="service-title">Postres</h3>
-      <p class="service-desc">Cheesecakes, tiramisú, brownies y tartaletas. Cada postre es una pequeña obra de arte diseñada para cerrar el día con dulzura.</p>
-      <a href="#contacto" class="service-link">Ver opciones
-        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
+    <article class="menu-card">
+      <div class="menu-card-media"><div class="menu-card-img" data-hint="Foto del producto"></div></div>
+      <div class="menu-card-body">
+        <span class="menu-card-index">05</span>
+        <h3 class="menu-card-title">Postres</h3>
+        <p class="menu-card-desc">Cheesecakes, tiramisú, brownies y tartaletas. Cada uno, una pequeña obra para cerrar el día.</p>
+        <span class="menu-card-link">Ver opciones <span class="arrow">→</span></span>
+      </div>
     </article>
 
-    <article class="service-card product-card tilt-card">
-      <!--
-        FOTO DEL PRODUCTO — reemplaza este div con:
-        <img src="img/catering.jpg" alt="Catering y Eventos">
-      -->
-      <div class="product-img" data-hint="Foto del producto"></div>
-      <div class="service-num">06</div>
-      <h3 class="service-title">Catering &amp; Eventos</h3>
-      <p class="service-desc">Organizamos el servicio de café y repostería para tus eventos corporativos, cumpleaños y celebraciones. Cotiza sin compromiso.</p>
-      <a href="#contacto" class="service-link">Cotizar
-        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
+    <article class="menu-card">
+      <div class="menu-card-media"><div class="menu-card-img" data-hint="Foto del producto"></div></div>
+      <div class="menu-card-body">
+        <span class="menu-card-index">06</span>
+        <h3 class="menu-card-title">Catering</h3>
+        <p class="menu-card-desc">Servicio de café y repostería para eventos corporativos y celebraciones. Cotiza sin compromiso.</p>
+        <span class="menu-card-link">Cotizar <span class="arrow">→</span></span>
+      </div>
     </article>
 
   </div>
 </section>
+
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track" id="marquee1"></div>
+</div>
 
 <!-- CLIENTS -->
-<section class="trusted" id="clientes">
-  <div class="section-eyebrow" style="justify-content:center;">
-    <div class="section-eyebrow-line"></div>
-    <span>Quiénes nos visitan</span>
-    <div class="section-eyebrow-line"></div>
-  </div>
-  <h2 class="section-title trusted-title">Parte de nuestra<br>comunidad</h2>
-  <p class="trusted-subtitle">Familias, profesionales y empresas de La Paz que hacen de CAFÉ AROMA su lugar favorito para reunirse.</p>
+<section class="clients" id="clientes">
+  <div class="section-eyebrow"><div class="section-eyebrow-line"></div><span>Quiénes nos visitan</span></div>
+  <h2 class="section-title clients-title" data-reveal>Parte de nuestra<br>comunidad</h2>
+  <p class="clients-sub" data-fade>Familias, profesionales y empresas de La Paz que hacen de CAFÉ AROMA su lugar para reunirse.</p>
   <div class="clients-grid">
-    <div class="client-item"><div class="client-name">FAMILIA GARCIA</div></div>
-    <div class="client-item"><div class="client-name">EMPRESA NOVA</div></div>
-    <div class="client-item"><div class="client-name">ESTUDIO SOLEIL</div></div>
-    <div class="client-item"><div class="client-name">EVENTOS LUNA</div></div>
-    <div class="client-item"><div class="client-name">OFICINAS APEX</div></div>
-    <div class="client-item"><div class="client-name">HOTEL AURORA</div></div>
-    <div class="client-item"><div class="client-name">ACADEMIA NEXO</div></div>
-    <div class="client-item"><div class="client-name">BODAS STELLA</div></div>
+    <div class="client-item">Familia García</div>
+    <div class="client-item">Empresa Nova</div>
+    <div class="client-item">Estudio Soleil</div>
+    <div class="client-item">Eventos Luna</div>
+    <div class="client-item">Oficinas Apex</div>
+    <div class="client-item">Hotel Aurora</div>
+    <div class="client-item">Academia Nexo</div>
+    <div class="client-item">Bodas Stella</div>
   </div>
 </section>
 
-<!-- EXPERIENCE / PROCESS -->
+<!-- PROCESS -->
 <section class="process">
-  <div class="section-eyebrow">
-    <div class="section-eyebrow-line"></div>
-    <span>Tu Visita</span>
-  </div>
-  <h2 class="section-title">Tu experiencia<br>en CAFÉ AROMA</h2>
+  <div class="section-eyebrow"><div class="section-eyebrow-line"></div><span>Tu Visita</span></div>
+  <h2 class="section-title" data-reveal>Tu experiencia<br>en cuatro pasos</h2>
   <div class="process-grid">
     <div class="process-step">
-      <div class="process-step-num">01</div>
-      <div class="process-step-icon">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-      </div>
-      <h3 class="process-step-title">Llega</h3>
-      <p class="process-step-desc">Encuéntranos en [tu dirección aquí]. Abrimos todos los días de 7:00 a 20:00. Parking disponible a media cuadra.</p>
+      <span class="process-num">01</span>
+      <h3 class="process-title">Llega</h3>
+      <p class="process-desc">Encuéntranos en [tu dirección]. Abrimos todos los días de 7:00 a 20:00. Parking a media cuadra.</p>
     </div>
     <div class="process-step">
-      <div class="process-step-num">02</div>
-      <div class="process-step-icon">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-      </div>
-      <h3 class="process-step-title">Elige</h3>
-      <p class="process-step-desc">Explora nuestra carta de bebidas, pastelería y desayunos. El equipo está para orientarte y recomendarte según tu gusto.</p>
+      <span class="process-num">02</span>
+      <h3 class="process-title">Elige</h3>
+      <p class="process-desc">Explora la carta de bebidas, pastelería y desayunos. El equipo te orienta según tu gusto.</p>
     </div>
     <div class="process-step">
-      <div class="process-step-num">03</div>
-      <div class="process-step-icon">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg>
-      </div>
-      <h3 class="process-step-title">Preparamos</h3>
-      <p class="process-step-desc">Nuestros baristas preparan tu pedido con dedicación. Cada café, cada pastel — hecho al momento con ingredientes frescos.</p>
+      <span class="process-num">03</span>
+      <h3 class="process-title">Preparamos</h3>
+      <p class="process-desc">Cada café, cada pastel — hecho al momento, con ingredientes frescos y sin prisa.</p>
     </div>
     <div class="process-step">
-      <div class="process-step-num">04</div>
-      <div class="process-step-icon">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-      </div>
-      <h3 class="process-step-title">Disfruta</h3>
-      <p class="process-step-desc">Relájate en nuestro espacio. Sin apuros, con WiFi gratuito y la música justa. Así se vive el café artesanal.</p>
+      <span class="process-num">04</span>
+      <h3 class="process-title">Disfruta</h3>
+      <p class="process-desc">Relájate en el espacio. WiFi libre, buena música y el tiempo a tu favor.</p>
     </div>
   </div>
 </section>
 
 <!-- TESTIMONIALS -->
 <section class="testimonials">
-  <div class="testimonials-header">
-    <div class="section-eyebrow">
-      <div class="section-eyebrow-line"></div>
-      <span>Reseñas</span>
-    </div>
-    <h2 class="section-title">Lo que dicen<br>nuestros clientes</h2>
+  <div class="testimonials-head">
+    <div class="section-eyebrow"><div class="section-eyebrow-line"></div><span>Reseñas</span></div>
+    <h2 class="section-title" data-reveal>Lo que dicen<br>nuestros clientes</h2>
   </div>
   <div class="testimonials-overflow">
     <div class="testimonials-track" id="testimonialsTrack"></div>
@@ -402,208 +335,93 @@
 </section>
 
 <!-- CTA -->
-<section class="cta-section">
-  <div class="cta-circle cta-circle-1" aria-hidden="true"></div>
-  <div class="cta-circle cta-circle-2" aria-hidden="true"></div>
-  <div class="cta-circle cta-circle-3" aria-hidden="true"></div>
-  <div class="cta-content">
-    <div class="section-eyebrow cta-eyebrow">
-      <div class="section-eyebrow-line"></div>
-      <span>Primera vez aqui?</span>
-      <div class="section-eyebrow-line"></div>
-    </div>
-    <h2 class="cta-title">
-      Ven y vive<br><em>la experiencia</em>
-    </h2>
-    <p class="cta-subtitle">Un lugar donde cada detalle está pensado para que te sientas como en casa. Te esperamos con el café listo.</p>
-    <div class="cta-actions">
-      <a href="#contacto" class="btn-primary magnetic">
-        <span>Hacer Pedido</span>
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </a>
-      <a href="#menu" class="btn-secondary">
-        Ver Menú
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-          <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </a>
-    </div>
+<section class="cta">
+  <p class="cta-kicker" data-fade>Primera vez aquí</p>
+  <h2 class="cta-title" data-reveal>Ven y vive<br><span class="accent">la experiencia</span></h2>
+  <p class="cta-sub" data-fade>Cada detalle está pensado para que te sientas como en casa. Te esperamos con el café listo.</p>
+  <div class="cta-actions" data-fade>
+    <a href="#contacto" class="btn-primary is-orange"><span>Hacer Pedido</span>
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+    <a href="#menu" class="btn-secondary">Ver Menú</a>
   </div>
 </section>
 
 <!-- CONTACT -->
 <section class="contact" id="contacto">
   <div class="contact-info">
-    <div class="section-eyebrow">
-      <div class="section-eyebrow-line"></div>
-      <span>Contacto</span>
-    </div>
-    <h2 class="section-title">Encuéntranos<br>aquí.</h2>
-    <p class="contact-text">Visítanos o escríbenos para reservas, pedidos especiales y catering de eventos. Respondemos dentro de las 24 horas.</p>
-    <div class="contact-items">
-      <div class="contact-item">
-        <div class="contact-item-icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.7 13.6a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.61 3h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10.6a16 16 0 0 0 6 6l.94-.94a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
-          </svg>
-        </div>
-        <div>
-          <div class="contact-item-label">Teléfono / WhatsApp</div>
-          <div class="contact-item-value"><a href="tel:77777777">77777777</a></div>
-        </div>
-      </div>
-      <div class="contact-item">
-        <div class="contact-item-icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
-          </svg>
-        </div>
-        <div>
-          <div class="contact-item-label">Email</div>
-          <div class="contact-item-value"><a href="mailto:hola@cafearoma.com">hola@cafearoma.com</a></div>
-        </div>
-      </div>
-      <div class="contact-item">
-        <div class="contact-item-icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
-          </svg>
-        </div>
-        <div>
-          <div class="contact-item-label">Dirección</div>
-          <div class="contact-item-value">[Tu dirección aquí], La Paz</div>
-        </div>
-      </div>
-      <div class="contact-item">
-        <div class="contact-item-icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-            <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
-          </svg>
-        </div>
-        <div>
-          <div class="contact-item-label">Horario</div>
-          <div class="contact-item-value">Lun–Vie 7:00–20:00 &middot; Sáb–Dom 8:00–21:00</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- MAPA DE UBICACIÓN -->
+    <div class="section-eyebrow"><div class="section-eyebrow-line"></div><span>Contacto</span></div>
+    <h2 class="section-title" data-reveal>Encuéntranos<br>aquí</h2>
+    <p class="contact-text" data-fade>Visítanos o escríbenos para reservas, pedidos especiales y catering. Respondemos dentro de 24 horas.</p>
+    <ul class="contact-items">
+      <li><span class="contact-label">Tel / WhatsApp</span><a href="tel:77777777">77777777</a></li>
+      <li><span class="contact-label">Email</span><a href="mailto:hola@cafearoma.com">hola@cafearoma.com</a></li>
+      <li><span class="contact-label">Dirección</span><span>[Tu dirección], La Paz</span></li>
+      <li><span class="contact-label">Horario</span><span>Lun–Vie 7–20 · Sáb–Dom 8–21</span></li>
+    </ul>
     <div class="contact-map">
-      <!--
-        MAPA: reemplaza este bloque con el iframe de Google Maps.
-        1. Ve a maps.google.com y busca tu local.
-        2. Clic en "Compartir" > "Insertar mapa" > copia el <iframe>.
-        3. Pega el <iframe> aquí y elimina este comentario.
-
-        Ejemplo:
-        <iframe
-          src="https://maps.google.com/maps?q=TU+DIRECCION&output=embed"
-          width="100%" height="100%"
-          style="border:0;" allowfullscreen loading="lazy">
-        </iframe>
-      -->
+      <!-- MAPA: pega aquí el <iframe> de Google Maps (Compartir > Insertar mapa). -->
       <div class="map-placeholder">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
         <span>Aquí va el mapa de Google Maps</span>
       </div>
     </div>
-
     <div class="contact-socials">
-      <a href="#" class="social-btn" title="Facebook" aria-label="Facebook">fb</a>
-      <a href="#" class="social-btn" title="Instagram" aria-label="Instagram">ig</a>
-      <a href="#" class="social-btn" title="TikTok" aria-label="TikTok">tk</a>
-      <a href="#" class="social-btn" title="WhatsApp" aria-label="WhatsApp">wa</a>
+      <a href="#" aria-label="Facebook">FB</a>
+      <a href="#" aria-label="Instagram">IG</a>
+      <a href="#" aria-label="TikTok">TK</a>
+      <a href="#" aria-label="WhatsApp">WA</a>
     </div>
   </div>
-  <div class="contact-form-wrap">
-    <form class="contact-form" id="contactForm" novalidate>
-      <div class="form-group">
-        <label class="form-label" for="nombre">Nombre *</label>
-        <input type="text" id="nombre" name="nombre" class="form-input" placeholder="Tu nombre completo" required>
-      </div>
-      <div class="form-group">
-        <label class="form-label" for="email">Email *</label>
-        <input type="email" id="email" name="email" class="form-input" placeholder="tu@email.com" required>
-      </div>
-      <div class="form-group">
-        <label class="form-label" for="telefono">Teléfono</label>
-        <input type="tel" id="telefono" name="telefono" class="form-input" placeholder="77777777">
-      </div>
-      <div class="form-group">
-        <label class="form-label" for="servicio">Tipo de consulta</label>
-        <select id="servicio" name="servicio" class="form-input form-select">
-          <option value="">Selecciona una opción</option>
-          <option>Reserva de mesa</option>
-          <option>Pedido especial</option>
-          <option>Catering para evento</option>
-          <option>Torta personalizada</option>
-          <option>Información general</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label class="form-label" for="mensaje">Cuéntanos más</label>
-        <textarea id="mensaje" name="mensaje" class="form-input form-textarea" placeholder="Describe tu pedido, evento o consulta. Fecha, número de personas, preferencias..."></textarea>
-      </div>
-      <button type="submit" class="form-submit magnetic">
-        <span>Enviar Mensaje</span>
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </button>
-    </form>
-  </div>
+
+  <form class="contact-form" id="contactForm" novalidate>
+    <div class="form-group">
+      <label class="form-label" for="nombre">Nombre *</label>
+      <input type="text" id="nombre" name="nombre" class="form-input" placeholder="Tu nombre completo" required>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="email">Email *</label>
+      <input type="email" id="email" name="email" class="form-input" placeholder="tu@email.com" required>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="telefono">Teléfono</label>
+      <input type="tel" id="telefono" name="telefono" class="form-input" placeholder="77777777">
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="servicio">Tipo de consulta</label>
+      <select id="servicio" name="servicio" class="form-input form-select">
+        <option value="">Selecciona una opción</option>
+        <option>Reserva de mesa</option>
+        <option>Pedido especial</option>
+        <option>Catering para evento</option>
+        <option>Torta personalizada</option>
+        <option>Información general</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="mensaje">Cuéntanos más</label>
+      <textarea id="mensaje" name="mensaje" class="form-input form-textarea" placeholder="Describe tu pedido, evento o consulta. Fecha, personas, preferencias..."></textarea>
+    </div>
+    <button type="submit" class="form-submit btn-primary"><span>Enviar Mensaje</span>
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </form>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-top">
-    <div class="footer-brand">
-      <a href="#" class="footer-logo">CAFÉ<span>.</span>AROMA</a>
-      <p class="footer-tagline">Cafetería artesanal en La Paz, Bolivia. Cada día abrimos nuestras puertas para brindarte el mejor café y pasteles hechos con amor.</p>
-      <div class="footer-socials">
-        <a href="#" class="social-btn" title="Facebook" aria-label="Facebook">fb</a>
-        <a href="#" class="social-btn" title="Instagram" aria-label="Instagram">ig</a>
-        <a href="#" class="social-btn" title="TikTok" aria-label="TikTok">tk</a>
-        <a href="#" class="social-btn" title="WhatsApp" aria-label="WhatsApp">wa</a>
-      </div>
-    </div>
-    <div>
-      <h4 class="footer-col-title">Cafetería</h4>
-      <ul class="footer-links">
-        <li><a href="#inicio">Inicio</a></li>
-        <li><a href="#nosotros">Nuestra Historia</a></li>
-        <li><a href="#menu">Menú</a></li>
-        <li><a href="#clientes">Clientes</a></li>
-        <li><a href="#contacto">Contacto</a></li>
-      </ul>
-    </div>
-    <div>
-      <h4 class="footer-col-title">Menú</h4>
-      <ul class="footer-links">
-        <li><a href="#menu">Espressos &amp; Café</a></li>
-        <li><a href="#menu">Bebidas Frías</a></li>
-        <li><a href="#menu">Pastelería</a></li>
-        <li><a href="#menu">Desayunos</a></li>
-        <li><a href="#menu">Catering</a></li>
-      </ul>
-    </div>
-    <div>
-      <h4 class="footer-col-title">Info</h4>
-      <ul class="footer-links">
-        <li><a href="#">Horarios</a></li>
-        <li><a href="#">Ubicación</a></li>
-        <li><a href="#">Política de Privacidad</a></li>
-        <li><a href="#">Términos de Uso</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span>&#169; 2025 CAFÉ AROMA &#8212; Todos los derechos reservados &#183; La Paz, Bolivia</span>
-    <span>Hecho con amor por <a href="#">CAFÉ AROMA</a></span>
-  </div>
+  <a href="#inicio" class="footer-logo">CAFÉ AROMA</a>
+  <nav class="footer-links" aria-label="Pie de pagina">
+    <a href="#nosotros">Historia</a>
+    <a href="#menu">Menú</a>
+    <a href="#clientes">Clientes</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+  <span class="footer-year">© 2025 · La Paz, Bolivia</span>
 </footer>
+
+</div><!-- /#smooth-content -->
+</div><!-- /#smooth-wrapper -->
 
 </body>
 </html>

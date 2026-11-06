@@ -2,59 +2,45 @@
 import './css/main.css';
 
 // ── Modules ──────────────────────────────────────────────────────────────────
-import { initLenis }          from './js/modules/lenis.js';
-import { initCursor }         from './js/modules/cursor.js';
-import { initNavbar }         from './js/modules/navbar.js';
-import { initTicker }         from './js/modules/ticker.js';
-import { initMarquee }        from './js/modules/marquee.js';
-import { initTestimonials }   from './js/modules/testimonials.js';
-import { initCounters }       from './js/modules/counter.js';
-import { initMagnetic }       from './js/modules/magnetic.js';
-import { initForm }           from './js/modules/form.js';
-import { initParticles }      from './js/modules/particles.js';
-import { initTilt }           from './js/modules/tilt.js';
-import {
-  animateHero,
-  initParallax,
-  initScrollAnimations,
-  initTrustedReveal,
-} from './js/modules/animations.js';
+import { initSmooth }       from './js/modules/smooth.js';
+import { initLoader }       from './js/modules/loader.js';
+import { initCursor }       from './js/modules/cursor.js';
+import { initNavbar }       from './js/modules/navbar.js';
+import { initTicker }       from './js/modules/ticker.js';
+import { initMarquee }      from './js/modules/marquee.js';
+import { initTestimonials } from './js/modules/testimonials.js';
+import { initCounters }     from './js/modules/counter.js';
+import { initMagnetic }     from './js/modules/magnetic.js';
+import { initForm }         from './js/modules/form.js';
+import { initStrips }       from './js/modules/strip.js';
+import { initProduct }      from './js/modules/product.js';
+import { animateHero, initScrollAnimations } from './js/modules/animations.js';
 
-// ── Loader ───────────────────────────────────────────────────────────────────
-function hideLoader() {
-  const loader = document.getElementById('loader');
-  if (!loader) return;
-  setTimeout(() => {
-    loader.classList.add('is-hidden');
-    loader.addEventListener('transitionend', () => loader.remove(), { once: true });
-  }, 1300);
-}
+// Mark JS active so anti-FOUC initial states (data-reveal / data-fade) apply
+document.documentElement.classList.add('js');
 
-// ── Init ─────────────────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
-  // Content that fills dynamic slots
+  // Fill dynamic content slots
   initTicker();
   initMarquee();
   initTestimonials();
 
-  // Core interactions
+  // Core interactions (safe before reveal)
   initCursor();
-  initLenis();
   initNavbar();
   initMagnetic();
   initForm();
-  initCounters();
 
-  // Visual effects
-  initParticles();
-  initTilt();
+  // Loader counts 0→100, then reveals the page from below
+  initLoader(() => {
+    // Smooth scroll first so ScrollTrigger reads correct positions
+    initSmooth();
 
-  // Animations (GSAP)
-  animateHero();
-  initParallax();
-  initScrollAnimations();
-  initTrustedReveal();
-
-  // Hide loader after all above is bootstrapped
-  hideLoader();
+    // Entrance + scroll-driven reveals
+    animateHero();
+    initScrollAnimations();
+    initProduct();    // pinned coffee cup that rotates through 3 scenes
+    initStrips();     // ticker + marquee, direction follows scroll velocity
+    initCounters();   // count-up once stats are visible
+  });
 });

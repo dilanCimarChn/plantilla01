@@ -8,14 +8,14 @@
 /* ── Components ───────────────────────────────────── */
 @import './components/loader.css';
 @import './components/cursor.css';
-@import './components/topbar.css';
 @import './components/navbar.css';
 @import './components/mobile-menu.css';
 @import './components/hero.css';
 @import './components/ticker.css';
+@import './components/product.css';
 @import './components/marquee.css';
 @import './components/about.css';
-@import './components/services.css';
+@import './components/menu.css';
 @import './components/clients.css';
 @import './components/process.css';
 @import './components/testimonials.css';

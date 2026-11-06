@@ -1,292 +1,139 @@
 .hero {
-  min-height: 100vh;
-  padding-top: var(--header-h);
-  display: flex;
-  align-items: center;
   position: relative;
+  min-height: 100svh;
   overflow: hidden;
-  background: var(--dark);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 6vh;
+  padding: calc(var(--nav-h) + 9vh) var(--pad-x) 44px;
 }
 
-/* Resplandor cálido ambiental */
-.hero-bg {
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 80% 60% at 75% 50%, rgba(198, 134, 66, 0.18) 0%, transparent 65%),
-    radial-gradient(ellipse 40% 40% at 10% 88%, rgba(92, 46, 10, 0.07) 0%, transparent 55%),
-    var(--dark);
-}
-
-/* Trama sutil */
-.hero-grid-overlay {
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(92, 46, 10, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(92, 46, 10, 0.05) 1px, transparent 1px);
-  background-size: 60px 60px;
-  pointer-events: none;
-  opacity: 0.55;
-}
-
-/* Particle canvas */
-.hero-canvas {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 1;
-}
-
-/* Orb — resplandor ámbar cálido */
-.hero-orb {
-  position: absolute;
-  right: -80px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 680px; height: 680px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 38% 42%,
-    rgba(198, 134, 66, 0.22) 0%,
-    rgba(198, 134, 66, 0.06) 40%,
-    rgba(92, 46, 10, 0.03) 60%,
-    transparent 75%);
-  will-change: transform;
-  z-index: 0;
-}
-
-.hero-orb::before, .hero-orb::after {
-  content: '';
-  position: absolute;
-  border-radius: 50%;
-  border: 1px solid rgba(92, 46, 10, 0.14);
-  animation: orbRing 8s ease-in-out infinite;
-}
-.hero-orb::before { inset: 40px;  animation-delay: 0.5s; border-color: rgba(92, 46, 10, 0.10); }
-.hero-orb::after  { inset: 110px; animation-delay: 1s;   border-color: rgba(198, 134, 66, 0.08); }
-
-/* Líneas flotantes cálidas */
+/* Horizontal line that expands 0 → 100% on load */
 .hero-line {
   position: absolute;
-  background: linear-gradient(90deg, transparent, rgba(92, 46, 10, 0.18), rgba(198, 134, 66, 0.12), transparent);
+  top: 30%;
+  left: 0;
+  width: 100%;
   height: 1px;
-  animation: lineFloat linear infinite;
-  z-index: 1;
+  background: var(--lime);
+  transform-origin: left center;
 }
 
-/* Content */
-.hero-content {
+/* ── Giant mark ─────────────────────────────────────────────────────── */
+.hero-mark {
   position: relative;
-  z-index: 2;
-  padding: 0 var(--pad-x);
-  max-width: 860px;
+  margin-top: auto;
+}
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(110px, 20vw, 340px);
+  line-height: 0.8;
+  letter-spacing: 0.01em;
+  color: var(--cream);
+  width: 90vw;
+  max-width: 100%;
 }
 
-.hero-eyebrow {
-  display: flex;
+/* Subtitle in DM Mono, overlaid as a band across the word */
+.hero-sub {
+  position: absolute;
+  left: 0;
+  top: 58%;
+  transform: translateY(-50%);
+  display: inline-flex;
   align-items: center;
   gap: 14px;
-  margin-bottom: 32px;
+  background: var(--bg);
+  padding: 8px 18px 8px 0;
+  font-family: var(--font-mono);
+  font-size: clamp(11px, 1.4vw, 15px);
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--lime);
 }
+.hero-sub-sep { color: var(--muted); }
 
-.hero-eyebrow-line {
-  width: 40px; height: 1px;
-  background: linear-gradient(90deg, var(--purple), var(--cyan));
+/* ── Foot: description + actions ────────────────────────────────────── */
+.hero-foot {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+.hero-desc {
+  max-width: 42ch;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--muted);
+}
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 26px;
   flex-shrink: 0;
 }
 
-.hero-eyebrow span {
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.26em;
-  color: var(--purple-light);
-  text-transform: uppercase;
-}
-
-.hero-title {
-  font-family: var(--font-serif);
-  font-size: clamp(60px, 8vw, 116px);
-  font-weight: 900;
-  line-height: 0.92;
-  letter-spacing: -0.025em;
-  margin-bottom: 36px;
-}
-
-.hero-title-line {
-  display: block;
-  color: var(--white);
-}
-
-.hero-title-stroke {
-  color: transparent;
-  -webkit-text-stroke: 1.5px rgba(43, 26, 14, 0.35);
-}
-
-/* Efecto glitch en tono espresso/caramelo */
-.hero-title-glitch {
-  position: relative;
-  color: transparent;
-  -webkit-text-stroke: 1.5px var(--purple-light);
-}
-
-.hero-title-glitch::before,
-.hero-title-glitch::after {
-  content: attr(data-text);
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%;
-  -webkit-text-stroke: 0;
-}
-
-.hero-title-glitch::before {
-  color: var(--cyan);
-  clip-path: polygon(0 20%, 100% 20%, 100% 45%, 0 45%);
-  transform: translateX(-4px);
-  animation: glitch-top 5s 1s infinite;
-}
-
-.hero-title-glitch::after {
-  color: var(--purple);
-  clip-path: polygon(0 60%, 100% 60%, 100% 80%, 0 80%);
-  transform: translateX(4px);
-  animation: glitch-bot 5s 1.5s infinite;
-}
-
-.hero-desc {
-  font-size: 18px;
-  font-weight: 300;
-  line-height: 1.78;
-  color: rgba(43, 26, 14, 0.58);
-  max-width: 500px;
-  margin-bottom: 52px;
-}
-
-.hero-actions {
-  display: flex;
-  gap: 24px;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-/* Stats */
+/* ── Stats ──────────────────────────────────────────────────────────── */
 .hero-stats {
-  position: absolute;
-  right: var(--pad-x);
-  bottom: 80px;
   display: flex;
-  gap: 48px;
-  z-index: 2;
+  gap: clamp(28px, 5vw, 72px);
+  padding-top: 26px;
+  border-top: 1px solid var(--line);
 }
-
-.hero-stat { position: relative; text-align: right; }
-
-.hero-stat + .hero-stat::before {
-  content: '';
-  position: absolute;
-  left: -24px; top: 10%; height: 80%;
-  width: 1px;
-  background: rgba(92, 46, 10, 0.18);
-}
-
+.hero-stat { display: flex; flex-direction: column; gap: 4px; }
 .hero-stat-num {
-  font-family: var(--font-sans);
-  font-size: 52px;
-  font-weight: 700;
-  color: var(--cyan);
-  line-height: 1;
-  text-shadow: var(--glow-cyan);
+  font-family: var(--font-display);
+  font-size: clamp(40px, 5vw, 68px);
+  line-height: 0.9;
+  color: var(--lime);
 }
-
 .hero-stat-label {
+  font-family: var(--font-mono);
   font-size: 11px;
-  font-weight: 500;
   letter-spacing: 0.16em;
-  color: rgba(43, 26, 14, 0.40);
   text-transform: uppercase;
-  margin-top: 6px;
+  color: var(--muted);
 }
 
-/* Scroll indicator */
+/* ── Scroll cue ─────────────────────────────────────────────────────── */
 .scroll-indicator {
   position: absolute;
-  bottom: 40px; left: var(--pad-x);
+  right: var(--pad-x);
+  bottom: 44px;
   display: flex;
   align-items: center;
   gap: 12px;
-  font-size: 11px;
-  letter-spacing: 0.2em;
-  color: rgba(43, 26, 14, 0.32);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
-  z-index: 2;
+  color: var(--muted);
 }
-
+.scroll-track {
+  position: relative;
+  width: 1px; height: 44px;
+  background: var(--line);
+  overflow: hidden;
+}
 .scroll-dot {
-  width: 1px; height: 54px;
-  background: linear-gradient(to bottom, var(--purple), var(--cyan), transparent);
-  animation: scrollPulse 2.2s ease-in-out infinite;
+  position: absolute;
+  top: 0; left: 0;
+  width: 1px; height: 14px;
+  background: var(--lime);
+  animation: scrollDrop 1.8s var(--ease-out) infinite;
+}
+@keyframes scrollDrop {
+  0%   { transform: translateY(-14px); }
+  100% { transform: translateY(44px); }
 }
 
-/* Keyframes — animaciones sin cambios */
-@keyframes orbRing {
-  0%, 100% { transform: scale(1) rotate(0deg); }
-  50%       { transform: scale(1.05) rotate(4deg); }
-}
-@keyframes lineFloat {
-  from { transform: translateX(-100%); opacity: 0; }
-  10%  { opacity: 1; }
-  90%  { opacity: 1; }
-  to   { transform: translateX(200vw); opacity: 0; }
-}
-@keyframes scrollPulse {
-  0%, 100% { opacity: 0.3; transform: scaleY(1); }
-  50%       { opacity: 1;   transform: scaleY(1.3); }
-}
-@keyframes glitch-top {
-  0%, 89%, 97%, 100% {
-    clip-path: polygon(0 20%, 100% 20%, 100% 45%, 0 45%);
-    transform: translateX(-4px);
-    opacity: 0;
-  }
-  90% { transform: translateX(6px); opacity: 1; }
-  91% { clip-path: polygon(0 5%, 100% 5%, 100% 32%, 0 32%); transform: translateX(-3px); opacity: 1; }
-  93% { clip-path: polygon(0 38%, 100% 38%, 100% 55%, 0 55%); transform: translateX(2px); opacity: 1; }
-  95% { transform: translateX(-4px); opacity: 0; }
-}
-@keyframes glitch-bot {
-  0%, 87%, 96%, 100% {
-    clip-path: polygon(0 60%, 100% 60%, 100% 80%, 0 80%);
-    transform: translateX(4px);
-    opacity: 0;
-  }
-  88% { transform: translateX(-6px); opacity: 1; }
-  90% { clip-path: polygon(0 55%, 100% 55%, 100% 75%, 0 75%); transform: translateX(3px); opacity: 1; }
-  93% { clip-path: polygon(0 70%, 100% 70%, 100% 90%, 0 90%); transform: translateX(-2px); opacity: 1; }
-  94% { transform: translateX(4px); opacity: 0; }
-}
-
-@media (max-width: 1100px) {
-  .hero-content     { padding: 0 var(--pad-x-md); }
-  .hero-stats       { display: none; }
-  .scroll-indicator { left: var(--pad-x-md); }
-}
-@media (max-width: 768px) {
-  .hero-title       { font-size: clamp(48px, 10vw, 72px); }
-  .hero-desc        { font-size: 16px; max-width: 100%; }
+@media (max-width: 900px) {
+  .scroll-indicator { display: none; }
+  .hero-foot { flex-direction: column; align-items: flex-start; gap: 28px; }
 }
 @media (max-width: 600px) {
-  .hero             { padding-top: var(--nav-h); }
-  .hero-content     { padding: 0 var(--pad-x-sm); }
-  .hero-title       { font-size: clamp(44px, 12vw, 56px); line-height: 0.95; }
-  .hero-desc        { font-size: 15px; margin-bottom: 40px; }
-  .hero-actions     { flex-direction: column; align-items: flex-start; gap: 16px; }
-  .hero-orb         { right: -240px; width: 380px; height: 380px; }
-  .scroll-indicator { left: var(--pad-x-sm); }
-  .hero-line        { display: none; }
-}
-@media (max-width: 400px) {
-  .hero-title       { font-size: 40px; }
-  .hero-desc        { font-size: 14px; margin-bottom: 32px; }
-  .hero-eyebrow span { font-size: 10px; letter-spacing: 0.18em; }
+  .hero-title { width: 100%; }
+  .hero-sub { position: static; transform: none; padding: 0; margin-top: 14px; }
 }

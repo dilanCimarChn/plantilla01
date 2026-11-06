@@ -1,40 +1,28 @@
 .loader {
-  position: fixed; inset: 0;
-  background: var(--dark);
-  display: flex; align-items: center; justify-content: center;
+  position: fixed;
+  inset: 0;
   z-index: var(--z-loader);
-  transition: opacity 0.7s var(--ease-smooth), visibility 0.7s;
-}
-.loader.is-hidden { opacity: 0; visibility: hidden; pointer-events: none; }
-
-.loader-inner { text-align: center; }
-
-.loader-logo {
-  font-family: var(--font-sans);
-  font-size: 28px; font-weight: 700;
-  letter-spacing: 0.15em;
-  color: var(--white);
-  margin-bottom: 28px;
-  opacity: 0;
-  animation: loaderFadeIn 0.5s 0.1s forwards;
-}
-.loader-logo span { color: var(--cyan); }
-
-.loader-bar {
-  width: 120px; height: 1px;
-  background: rgba(92, 46, 10, 0.15);
-  margin: 0 auto; overflow: hidden;
-  opacity: 0;
-  animation: loaderFadeIn 0.5s 0.3s forwards;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
 
-.loader-bar-fill {
-  height: 100%;
-  background: linear-gradient(90deg, var(--purple), var(--cyan));
-  animation: loaderProgress 0.9s 0.4s var(--ease-out) forwards;
-  transform: scaleX(0); transform-origin: left;
-  box-shadow: var(--glow-cyan);
+.loader-count {
+  font-family: var(--font-display);
+  font-size: 15vw;
+  line-height: 1;
+  color: var(--lime);
+  transform-origin: center center;
+  will-change: transform, filter, opacity;
 }
 
-@keyframes loaderFadeIn   { to { opacity: 1; } }
-@keyframes loaderProgress { to { transform: scaleX(1); } }
+.loader-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--muted);
+}

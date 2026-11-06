@@ -1,0 +1,95 @@
+.product-section { padding: 0; }
+
+.product-stage {
+  position: relative;
+  height: 100vh;
+  min-height: 620px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  perspective: 1200px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+/* ── The cup (hero) ─────────────────────────────────────────────────── */
+.product {
+  position: relative;
+  z-index: 2;
+  width: clamp(200px, 26vw, 380px);
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+.product svg { width: 100%; height: auto; display: block; overflow: visible; }
+
+.cup-stroke {
+  fill: none;
+  stroke: var(--cream);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.cup-coffee { fill: var(--lime); }
+.steam {
+  fill: none;
+  stroke: var(--muted);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  animation: steam 3.6s var(--ease-smooth) infinite;
+}
+.steam.s2 { animation-delay: 0.9s; }
+@keyframes steam {
+  0%, 100% { opacity: 0.12; transform: translateY(3px); }
+  50%      { opacity: 0.55; transform: translateY(-2px); }
+}
+
+/* ── Scenes ─────────────────────────────────────────────────────────── */
+.product-scenes { position: absolute; inset: 0; z-index: 1; }
+.product-scene {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  padding: clamp(96px, 13vh, 150px) var(--pad-x) clamp(56px, 8vh, 100px);
+}
+.product-scene-num {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--lime);
+}
+.product-scene-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+.product-scene-title {
+  font-family: var(--font-display);
+  font-size: clamp(52px, 8vw, 120px);
+  line-height: 0.86;
+  color: var(--cream);
+}
+.product-scene-text {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--muted);
+  max-width: 44ch;
+}
+
+@media (max-width: 600px) {
+  .product-scene-text { font-size: 13px; }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  .product-stage { height: auto; min-height: 0; overflow: visible; padding: 2rem 0; }
+  .product-scenes { position: static; display: grid; gap: 2rem; }
+  .product-scene { position: static; inset: auto; padding: 1rem; gap: 1rem; opacity: 1; clip-path: none; }
+  .product { width: min(12rem, 70vw); }
+}

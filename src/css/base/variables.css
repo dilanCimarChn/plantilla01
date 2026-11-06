@@ -1,80 +1,66 @@
 :root {
-  /* Cafetería artesanal — paleta cálida en tono claro
-     Fondo ivory/pergamino = acogedor + artesanal + auténtico
-     Espresso marrón       = profundidad + calidez + café
-     Caramelo/ámbar        = notas doradas + premium */
+  /* ── Identidad CAFÉ AROMA — editorial cálido / madera tradicional ─────
+     Fondo crema papel + acento madera (nogal/caramelo). Texto espresso.
+     Terracota SOLO para highlights puntuales.
+     (Se conservan los nombres --lime/--cream del rediseño; aquí --lime es
+      el acento madera y --cream es el texto espresso sobre fondo claro.) */
 
-  --purple:       #5C2E0A;              /* espresso profundo */
-  --purple-light: #8B4513;              /* grano de café */
-  --purple-pale:  #C4956A;              /* caramelo pálido */
-  --purple-dim:   rgba(92, 46, 10, 0.10);
+  --bg:        #F2E9D8;   /* fondo primario (crema papel) */
+  --surface:   #E8DCC2;   /* cards / superficies */
+  --surface-2: #E0D2B5;   /* superficie alterna */
+  --lime:      #8C5A2B;   /* acento principal (madera / caramelo) */
+  --cream:     #2B1C0E;   /* texto principal (espresso oscuro) */
+  --orange:    #B14A1E;   /* highlight puntual (terracota) */
 
-  --cyan:         #C68642;              /* caramelo/ámbar cálido */
-  --cyan-dim:     rgba(198, 134, 66, 0.12);
+  /* Texto derivado (sobre fondo claro) */
+  --muted:     rgba(43, 28, 14, 0.62);  /* texto secundario */
+  --faint:     rgba(43, 28, 14, 0.40);  /* texto terciario / hints */
+  --line:      rgba(43, 28, 14, 0.16);  /* hairlines / bordes sutiles */
+  --line-lime: rgba(140, 90, 43, 0.40); /* bordes acento sutiles */
 
-  /* Backward-compat aliases */
-  --gold:       #5C2E0A;
-  --gold-light: #8B4513;
-  --gold-pale:  #C4956A;
+  /* ── Tipografía ─────────────────────────────────────────────────── */
+  --font-display: 'Bebas Neue', 'Arial Narrow', sans-serif;  /* impacto editorial */
+  --font-mono:    'DM Mono', ui-monospace, 'SFMono-Regular', monospace; /* body técnico */
+  --font-accent:  'Cormorant Garamond', Georgia, serif;      /* citas en italic */
 
-  /* Fondos cálidos (ivory / pergamino) */
-  --dark:   #FAF7F2;  /* bg principal */
-  --dark-2: #F3EBD9;  /* bg secundario */
-  --dark-3: #EBE0CC;  /* bg tarjetas */
+  /* ── Espaciado ──────────────────────────────────────────────────── */
+  --pad-x:    72px;
+  --pad-y:    160px;
+  --pad-x-md: 40px;
+  --pad-y-md: 110px;
+  --pad-x-sm: 22px;
+  --pad-y-sm: 84px;
 
-  /* Texto */
-  --white:  #2B1A0E;  /* texto principal (espresso oscuro) */
-  --cream:  #FAF7F2;  /* texto sobre superficies de acento oscuras */
-  --gray:   #8A7055;  /* texto secundario / apagado */
-
-  /* Sombras suaves y cálidas (sin neones) */
-  --glow-purple: 0 4px 20px rgba(92, 46, 10, 0.18),
-                 0 8px 40px rgba(92, 46, 10, 0.07);
-  --glow-cyan:   0 4px 16px rgba(198, 134, 66, 0.32);
-  --glow-card:   0 4px 24px rgba(92, 46, 10, 0.10),
-                 0 1px 4px  rgba(92, 46, 10, 0.05);
-
-  /* Espaciado */
-  --pad-x:    60px;
-  --pad-y:    140px;
-  --pad-x-md: 30px;
-  --pad-y-md: 100px;
-  --pad-x-sm: 20px;
-  --pad-y-sm: 80px;
-
-  /* Tipografía */
-  --font-serif: 'Playfair Display', Georgia, serif;
-  --font-sans:  'Outfit', system-ui, sans-serif;
-
-  /* Transiciones */
+  /* ── Transiciones ───────────────────────────────────────────────── */
   --ease-smooth: cubic-bezier(0.25, 0.46, 0.45, 0.94);
   --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-power4: cubic-bezier(0.22, 1, 0.36, 1);
   --dur-fast: 0.25s;
-  --dur-base: 0.4s;
-  --dur-slow: 0.7s;
+  --dur-base: 0.45s;
+  --dur-slow: 0.8s;
 
-  /* Layout */
-  --topbar-h: 36px;
-  --nav-h:    80px;
+  /* ── Layout ─────────────────────────────────────────────────────── */
+  --topbar-h: 34px;
+  --nav-h:    78px;
   --header-h: calc(var(--topbar-h) + var(--nav-h));
 
-  /* Breakpoints (for JS reference via CSS vars) */
+  /* ── Breakpoints (referencia) ───────────────────────────────────── */
   --bp-xl:  1440px;
   --bp-lg:  1100px;
   --bp-md:   768px;
   --bp-sm:   600px;
   --bp-xs:   400px;
 
-  /* Z-index */
+  /* ── Z-index ────────────────────────────────────────────────────── */
   --z-base:   1;
   --z-nav:    100;
   --z-topbar: 101;
   --z-menu:   200;
   --z-cursor: 9998;
-  --z-loader: 9999;
+  --z-loader: 10000;
 }
 
-/* ── Tablet: override padding vars ─────────── */
+/* ── Tablet ───────────────────────────────────────────────────────── */
 @media (max-width: 1100px) {
   :root {
     --pad-x: var(--pad-x-md);
@@ -82,12 +68,12 @@
   }
 }
 
-/* ── Mobile: override padding + layout vars ── */
+/* ── Mobile ───────────────────────────────────────────────────────── */
 @media (max-width: 600px) {
   :root {
     --pad-x:    var(--pad-x-sm);
     --pad-y:    var(--pad-y-sm);
-    --nav-h:    68px;
+    --nav-h:    62px;
     --topbar-h: 0px;
     --header-h: var(--nav-h);
   }
