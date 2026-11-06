@@ -94,6 +94,9 @@
 }
 .form-input::placeholder { color: var(--faint); }
 .form-input:focus { outline: none; border-color: var(--lime); }
+.form-input[aria-invalid="true"] { border-color: #ff786e; }
+.form-status { min-height: 1.5em; margin: 0; color: var(--muted); font-size: 13px; line-height: 1.5; }
+.form-status:empty { min-height: 0; }
 .form-select {
   cursor: none;
   appearance: none;
